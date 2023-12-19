@@ -5,15 +5,25 @@ import time
 
 driver = webdriver.Chrome('/Users/utkarshpadia/Downloads/chromedriver-mac-arm64/chromedriver')
 
-driver.get('https://store.unionlosangeles.com/collections/clothing?page=3')
+driver.get('https://store.unionlosangeles.com/collections/footwear')
 
 last_height = 0
 
+
+
 while (True):
-    page_height = driver.execute_script("document.body.scrollHeight")
-    if (page_height==last_height):
-        break
+    time.sleep(4)
     driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
-    time.sleep(6)
-    last_height = page_height
+    time.sleep(4)
+    load_button = driver.find_element_by_xpath('//*[@id="fs-serp-page"]/div/div[2]/div[3]')
+    if (load_button):
+        load_button.click()
+    else:
+        break
+
+
+
+
+
+
 
